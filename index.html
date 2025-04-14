@@ -9,7 +9,7 @@
     <style>
         :root {
             --primary: #FF0000;
-            --secondary: #0066FF;
+            --secondary: #FFD700;
             --accent: #00FF00;
             --dark: #0A0A0A;
             --light: #FFFFFF;
@@ -68,6 +68,37 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background: #111111;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 1.1rem;
         }
 
         /* Pricing Section */
@@ -153,6 +184,91 @@
             display: block;
         }
 
+        /* Reviews Section */
+        .reviews {
+            padding: 100px 0;
+            background: #111111;
+        }
+
+        .review-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .review-card {
+            background: #1A1A1A;
+            border: 1px solid var(--secondary);
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .reviewer img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid var(--secondary);
+        }
+
+        .rating {
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background: #0A0A0A;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--secondary);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            background: #1A1A1A;
+            color: var(--light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #222222;
+        }
+
+        .faq-answer p {
+            padding: 20px 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
         /* Footer */
         footer {
             background: #000000;
@@ -180,6 +296,26 @@
         </div>
     </section>
 
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item" data-aos="fade-up">
+                    <div class="stat-number">1,250+</div>
+                    <div class="stat-label">Active Traders</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number">$300K+</div>
+                    <div class="stat-label">Payouts Delivered</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing Section -->
     <section class="pricing">
         <div class="container">
@@ -193,10 +329,10 @@
                         $1000 <span>for $100</span>
                     </div>
                     <ul style="list-style: none; text-align: left; margin: 20px 0;">
-                        <li>✓ 1:200 Leverage</li>
-                        <li>✓ 10% Daily Drawdown</li>
-                        <li>✓ 30% Max Loss</li>
-                        <li>✓ upto 80% Profit Split</li>
+                        <li>✓ 1:100 Leverage</li>
+                        <li>✓ 5% Daily Drawdown</li>
+                        <li>✓ 10% Max Loss</li>
+                        <li>✓ 80% Profit Split</li>
                     </ul>
                     <a href="#" class="btn">Get Funded Now</a>
                 </div>
@@ -253,6 +389,128 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 30px;" data-aos="fade-up">Trader Reviews</h2>
+            
+            <div class="review-cards">
+                <div class="review-card" data-aos="fade-up">
+                    <div class="reviewer">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Trader">
+                        <div>
+                            <h4>Michael R.</h4>
+                            <p>Professional Trader</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"I've been with CapitalFXTraders for 6 months and the payouts are always on time. The instant funding program changed my trading career!"</p>
+                </div>
+                
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="reviewer">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Trader">
+                        <div>
+                            <h4>Sarah K.</h4>
+                            <p>Swing Trader</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"The $25k account helped me scale my strategy. Support team is very responsive whenever I have questions."</p>
+                </div>
+                
+                <div class="review-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="reviewer">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Trader">
+                        <div>
+                            <h4>David L.</h4>
+                            <p>Algorithmic Trader</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"As an EA developer, I appreciate their MT4/MT5 support. Withdrawals processed within 24 hours consistently."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 style="text-align: center;" data-aos="fade-up">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        How does instant funding work?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our instant funding program allows you to start trading immediately after purchase without any evaluation phase. You get direct access to a funded account with the chosen balance.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        What are the payout terms?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Payouts are processed weekly. You keep 80-90% of profits depending on your account size. Minimum withdrawal is $100.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        Can I use Expert Advisors?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We fully support algorithmic trading on both MT4 and MT5 platforms.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        What's the maximum account size?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer accounts up to $25,000 in our instant funding program. For larger accounts, check our evaluation program.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        How quickly can I start trading?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Immediately after purchase! You'll receive your login credentials within 15 minutes of payment confirmation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -262,10 +520,26 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize animations
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
             once: true
+        });
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+                
+                // Close other open items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
