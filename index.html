@@ -3,1205 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CapitalForForexTraders - Premium Funding Programs</title>
+    <title>CapitalForForexTraders - Instant Funding</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* ===== Global Styles ===== */
         :root {
-            --primary: #6c5ce7;
-            --primary-dark: #5649c0;
-            --secondary: #00cec9;
-            --accent: #fd79a8;
-            --dark: #2d3436;
-            --light: #f8f9fa;
-            --gray: #636e72;
-            --success: #00b894;
-            --danger: #d63031;
-            --warning: #fdcb6e;
+            --primary: #FF0000;
+            --secondary: #0066FF;
+            --accent: #00FF00;
+            --dark: #0A0A0A;
+            --light: #FFFFFF;
+            --gray: #888888;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
-        
+
         body {
-            background-color: #f8f9fa;
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background-color: var(--dark);
+            color: var(--light);
         }
-        
+
         .container {
-            width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-        
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 70px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-        
-        h3 {
-            font-size: 1.8rem;
-        }
-        
-        p {
-            margin-bottom: 1rem;
-            color: var(--gray);
-            font-size: 1.1rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            border: none;
-            font-size: 1rem;
-        }
-        
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            z-index: -1;
-            transition: all 0.4s ease;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
-        }
-        
-        .btn-primary:active {
-            transform: translateY(1px);
-        }
-        
-        .btn-secondary {
-            background: white;
-            color: var(--primary);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        .text-primary {
-            color: var(--primary);
-        }
-        
-        .text-secondary {
-            color: var(--secondary);
-        }
-        
-        /* ===== Header ===== */
+
+        /* Header */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            background: rgba(10, 10, 10, 0.95);
+            padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--primary);
         }
-        
-        header.scrolled {
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            background-color: rgba(255, 255, 255, 0.98);
-        }
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
+
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-        
-        .logo span {
-            color: var(--secondary);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-            position: relative;
-        }
-        
-        .nav-links a {
-            color: var(--dark);
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-links a i {
-            margin-left: 5px;
-            font-size: 0.8rem;
-            transition: transform 0.3s;
-        }
-        
-        .nav-links li:hover a i {
-            transform: rotate(180deg);
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-            min-width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            transform: translateY(10px);
-        }
-        
-        .nav-links li:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .dropdown-menu li {
-            margin: 0;
-            padding: 0;
-        }
-        
-        .dropdown-menu a {
-            padding: 10px 20px;
-            color: var(--dark);
-            display: block;
-        }
-        
-        .dropdown-menu a:hover {
-            background: #f8f9fa;
-            color: var(--primary);
-        }
-        
-        .nav-buttons {
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-buttons .btn {
-            margin-left: 15px;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-        
-        /* ===== Hero Section ===== */
-        .hero {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
-            padding: 200px 0 100px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
-        }
-        
-        .hero h1 {
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: var(--gray);
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        
-        .hero-stats {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .stat-item {
-            display: flex;
-            align-items: center;
-        }
-        
-        .stat-icon {
             font-size: 2rem;
-            margin-right: 15px;
-            color: var(--secondary);
-        }
-        
-        .stat-number {
-            font-size: 1.8rem;
             font-weight: 700;
-            line-height: 1;
+            color: var(--light);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(45deg, var(--dark), #1A1A1A);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--gray);
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: #111111;
         }
-        
-        .hero-image {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50%;
-            max-width: 700px;
-            z-index: 1;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-50%) translateX(-20px); }
-            100% { transform: translateY(-50%) translateX(0); }
-        }
-        
-        .hero-image img {
-            width: 100%;
-            height: auto;
-        }
-        
-        /* ===== Platforms Section ===== */
-        .platforms {
-            background-color: white;
-        }
-        
-        .platforms-container {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-        
-        .platform-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            padding: 40px;
-            text-align: center;
-            transition: all 0.4s ease;
-            width: 280px;
-        }
-        
-        .platform-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .platform-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
-            border-radius: 20px;
-        }
-        
-        .platform-icon img {
-            max-width: 80%;
-            max-height: 80%;
-        }
-        
-        .platform-name {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .platform-features {
-            list-style: none;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .platform-features li {
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-        }
-        
-        .platform-features li:before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--success);
-        }
-        
-        /* ===== Programs Section ===== */
-        .programs {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .programs:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.fundednext.com/images/dots-bg.png') no-repeat center center/cover;
-            opacity: 0.05;
-            z-index: 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .section-header p {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .program-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .tab-btn {
-            padding: 12px 30px;
-            background: none;
-            border: none;
-            font-weight: 600;
-            color: var(--gray);
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .tab-btn:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--primary);
-            transition: all 0.3s ease;
-        }
-        
-        .tab-btn.active {
-            color: var(--primary);
-        }
-        
-        .tab-btn.active:after {
-            width: 100%;
-        }
-        
-        .program-cards {
+
+        .pricing-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            position: relative;
-            z-index: 1;
+            margin-top: 50px;
         }
-        
-        .program-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            padding: 40px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #e9ecef;
+
+        .pricing-card {
+            background: #1A1A1A;
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
         }
-        
-        .program-card:hover {
+
+        .pricing-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--secondary);
         }
-        
-        .program-card.popular {
+
+        .price {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1.5rem;
+            color: var(--light);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--light);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Platforms Section */
+        .platforms {
+            padding: 100px 0;
+            background: #0A0A0A;
+        }
+
+        .platform-cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .platform-card {
+            background: #1A1A1A;
+            padding: 30px;
+            border-radius: 10px;
+            width: 250px;
             border: 2px solid var(--secondary);
         }
-        
-        .popular-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--secondary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .program-card-header {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e9ecef;
-        }
-        
-        .program-name {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-        
-        .program-amount {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .program-price {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-        
-        .program-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-        
-        .program-features li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-        }
-        
-        .program-features li:before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--success);
-        }
-        
-        /* ===== Features Section ===== */
-        .features {
-            background-color: white;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.4s ease;
-            border: 1px solid #e9ecef;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0, 206, 201, 0.1) 100%);
-            border-radius: 20px;
-        }
-        
-        /* ===== Video Section ===== */
-        .video-section {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .video-section:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        .platform-card img {
             width: 100%;
-            height: 100%;
-            background: url('https://www.fundednext.com/images/dots-bg-white.png') no-repeat center center/cover;
-            opacity: 0.1;
-        }
-        
-        .video-container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-        }
-        
-        .video-thumbnail {
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .video-thumbnail img {
-            width: 100%;
+            max-width: 150px;
+            margin: 0 auto 20px;
             display: block;
         }
-        
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .play-button i {
-            color: white;
-            font-size: 2rem;
-            margin-left: 5px;
-        }
-        
-        .play-button:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        /* ===== Testimonials Section ===== */
-        .testimonials {
-            background-color: #f8f9fa;
-        }
-        
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .testimonial-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            margin: 0 15px;
-            text-align: center;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 30px;
-            position: relative;
-            font-size: 1.1rem;
-        }
-        
-        .testimonial-text:before,
-        .testimonial-text:after {
-            content: '"';
-            font-size: 3rem;
-            color: var(--primary);
-            opacity: 0.2;
-            position: absolute;
-        }
-        
-        .testimonial-text:before {
-            top: -20px;
-            left: -10px;
-        }
-        
-        .testimonial-text:after {
-            bottom: -40px;
-            right: -10px;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
-            border: 3px solid var(--secondary);
-        }
-        
-        .author-info {
-            text-align: left;
-        }
-        
-        .author-name {
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .author-role {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        .rating {
-            color: var(--warning);
-            margin-top: 5px;
-        }
-        
-        /* ===== CTA Section ===== */
-        .cta {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            text-align: center;
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.fundednext.com/images/dots-bg-white.png') no-repeat center center/cover;
-            opacity: 0.1;
-        }
-        
-        .cta h2 {
-            color: white;
-            margin-bottom: 20px;
-        }
-        
-        .cta h2:after {
-            background: white;
-        }
-        
-        .cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        /* ===== Footer ===== */
+
+        /* Footer */
         footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 80px 0 30px;
-            position: relative;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        
-        .footer-logo span {
-            color: var(--secondary);
-        }
-        
-        .footer-about p {
-            color: #94a3b8;
-            margin-bottom: 20px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #334155;
-            color: white;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .footer-links h3 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .footer-contact p {
-            display: flex;
-            align-items: center;
-            color: #94a3b8;
-            margin-bottom: 15px;
-        }
-        
-        .footer-contact i {
-            margin-right: 10px;
-            color: var(--secondary);
-        }
-        
-        .footer-bottom {
+            background: #000000;
+            padding: 50px 0;
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #334155;
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-        
-        /* ===== Responsive Styles ===== */
-        @media (max-width: 1200px) {
-            .hero-image {
-                width: 45%;
-                opacity: 0.8;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-image {
-                display: none;
-            }
-            
-            .hero-content {
-                max-width: 100%;
-                text-align: center;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .hero-stats {
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-links, .nav-buttons {
-                display: none;
-            }
-            
-            .hero {
-                padding: 150px 0 80px;
-            }
-            
-            section {
-                padding: 80px 0;
-            }
-            
-            .program-tabs {
-                flex-wrap: wrap;
-            }
-            
-            .tab-btn {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .btn {
-                width: 100%;
-            }
-            
-            .hero-stats {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .platform-card {
-                width: 100%;
-            }
+            border-top: 2px solid var(--primary);
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header id="header">
+    <header>
         <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">
-                    <img src="https://via.placeholder.com/40x40" alt="CapitalForForexTraders Logo">
-                    Capital<span>ForForex</span>Traders
-                </a>
-                
-                <ul class="nav-links">
-                    <li>
-                        <a href="#programs">Programs <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#evaluation">Evaluation</a></li>
-                            <li><a href="#express">Express</a></li>
-                            <li><a href="#direct">Direct Funding</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#platforms">Platforms</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#rules">Rules</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                </ul>
-                
-                <div class="nav-buttons">
-                    <a href="#" class="btn btn-secondary">Login</a>
-                    <a href="#programs" class="btn btn-primary">Get Funded</a>
-                </div>
-                
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
+            <div class="logo">Capital<span>FX</span>Traders</div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="container">
-            <div class="hero-content" data-aos="fade-up">
-                <h1>Become A Funded Forex Trader Today</h1>
-                <p>Join thousands of traders who have been funded by our proprietary trading firm. Pass our evaluation and get funded up to $200,000 with the most trader-friendly rules in the industry.</p>
-                
-                <div class="hero-buttons">
-                    <a href="#programs" class="btn btn-primary">Get Funded Now</a>
-                    <a href="#features" class="btn btn-secondary">Learn More</a>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div>
-                            <div class="stat-number">8,000+</div>
-                            <div class="stat-label">Traders Funded</div>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        <div>
-                            <div class="stat-number">$75M+</div>
-                            <div class="stat-label">Paid Out</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h1 data-aos="fade-up">Get Instant Funding Today</h1>
+            <p data-aos="fade-up" data-aos-delay="200" style="color: var(--gray);">
+                Start trading with our capital in minutes - No evaluation required!
+            </p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 30px;" data-aos="fade-up">Funding Programs</h2>
             
-            <div class="hero-image" data-aos="fade-left">
-                <img src="https://www.fundednext.com/images/hero-img.png" alt="Trading Dashboard">
+            <div class="pricing-cards">
+                <!-- $1000 Account -->
+                <div class="pricing-card" data-aos="fade-up">
+                    <h3>Starter Account</h3>
+                    <div class="price">
+                        $1000 <span>for $100</span>
+                    </div>
+                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
+                        <li>✓ 1:200 Leverage</li>
+                        <li>✓ 10% Daily Drawdown</li>
+                        <li>✓ 30% Max Loss</li>
+                        <li>✓ upto 80% Profit Split</li>
+                    </ul>
+                    <a href="#" class="btn">Get Funded Now</a>
+                </div>
+
+                <!-- $10,000 Account -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Professional Account</h3>
+                    <div class="price">
+                        $10,000 <span>for $1000</span>
+                    </div>
+                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
+                        <li>✓ 1:100 Leverage</li>
+                        <li>✓ 5% Daily Drawdown</li>
+                        <li>✓ 10% Max Loss</li>
+                        <li>✓ 85% Profit Split</li>
+                    </ul>
+                    <a href="#" class="btn">Get Funded Now</a>
+                </div>
+
+                <!-- $25,000 Account -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>Expert Account</h3>
+                    <div class="price">
+                        $25,000 <span>for $2500</span>
+                    </div>
+                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
+                        <li>✓ 1:200 Leverage</li>
+                        <li>✓ 5% Daily Drawdown</li>
+                        <li>✓ 10% Max Loss</li>
+                        <li>✓ 90% Profit Split</li>
+                    </ul>
+                    <a href="#" class="btn">Get Funded Now</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Platforms Section -->
-    <section id="platforms" class="platforms">
+    <section class="platforms">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Supported Trading Platforms</h2>
-                <p>Trade on the platforms you're most comfortable with using our capital</p>
-            </div>
+            <h2 style="text-align: center; margin-bottom: 30px;" data-aos="fade-up">Supported Platforms</h2>
             
-            <div class="platforms-container">
-                <!-- MT5 -->
-                <div class="platform-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="platform-icon">
-                        <img src="https://www.fundednext.com/images/mt5-icon.png" alt="MetaTrader 5">
-                    </div>
-                    <h3 class="platform-name">MetaTrader 5</h3>
-                    <ul class="platform-features">
-                        <li>Advanced charting tools</li>
-                        <li>Algorithmic trading</li>
-                        <li>Depth of Market</li>
-                        <li>Economic calendar</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Learn More</a>
+            <div class="platform-cards">
+                <div class="platform-card" data-aos="fade-up">
+                    <img src="https://www.metatrader5.com/img/logo_mt5.png" alt="MT5">
+                    <h3 style="text-align: center;">MetaTrader 5</h3>
                 </div>
                 
-                <!-- MT4 -->
                 <div class="platform-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="platform-icon">
-                        <img src="https://www.fundednext.com/images/mt4-icon.png" alt="MetaTrader 4">
-                    </div>
-                    <h3 class="platform-name">MetaTrader 4</h3>
-                    <ul class="platform-features">
-                        <li>Industry standard platform</li>
-                        <li>Expert Advisors (EAs)</li>
-                        <li>Custom indicators</li>
-                        <li>One-click trading</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Learn More</a>
-                </div>
-                
-                <!-- cTrader -->
-                <div class="platform-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="platform-icon">
-                        <img src="https://www.fundednext.com/images/ctrader-icon.png" alt="cTrader">
-                    </div>
-                    <h3 class="platform-name">cTrader</h3>
-                    <ul class="platform-features">
-                        <li>Level II pricing</li>
-                        <li>Advanced order types</li>
-                        <li>Full market depth</li>
-                        <li>Clean interface</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Learn More</a>
+                    <img src="https://www.metatrader4.com/img/logo_mt4.png" alt="MT4">
+                    <h3 style="text-align: center;">MetaTrader 4</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Programs Section -->
-    <section id="programs" class="programs">
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Our Funding Programs</h2>
-                <p>Choose the program that best fits your trading style and goals</p>
-            </div>
-            
-            <div class="program-tabs" data-aos="fade-up">
-                <button class="tab-btn active" data-tab="evaluation">Evaluation</button>
-                <button class="tab-btn" data-tab="express">Express</button>
-                <button class="tab-btn" data-tab="direct">Direct Funding</button>
-            </div>
-            
-            <div class="program-cards">
-                <!-- Evaluation Program 1 -->
-                <div class="program-card" data-aos="fade-up" data-aos-delay="100" data-program="evaluation">
-                    <div class="program-card-header">
-                        <h3 class="program-name">Starter</h3>
-                        <div class="program-amount">$10,000</div>
-                        <div class="program-price">$99</div>
-                    </div>
-                    
-                    <ul class="program-features">
-                        <li>8% Profit Target</li>
-                        <li>5% Maximum Daily Loss</li>
-                        <li>5% Maximum Overall Loss</li>
-                        <li>1:30 Profit Split</li>
-                        <li>No Time Limit</li>
-                        <li>MT4, MT5, cTrader</li>
-                    </ul>
-                    
-                    <a href="#" class="btn btn-primary" style="width: 100%;">Get Started</a>
-                </div>
-                
-                <!-- Evaluation Program 2 -->
-                <div class="program-card popular" data-aos="fade-up" data-aos-delay="200" data-program="evaluation">
-                    <div class="popular-badge">MOST POPULAR</div>
-                    <div class="program-card-header">
-                        <h3 class="program-name">Advanced</h3>
-                        <div class="program-amount">$50,000</div>
-                        <div class="program-price">$299</div>
-                    </div>
-                    
-                    <ul class="program-features">
-                        <li>10% Profit Target</li>
-                        <li>5% Maximum Daily Loss</li>
-                        <li>10% Maximum Overall Loss</li>
-                        <li>1:50 Profit Split</li>
-                        <li>No Time Limit</li>
-                        <li>MT4, MT5, cTrader</li>
-                    </ul>
-                    
-                    <a href="#" class="btn btn-secondary" style="width: 100%;">Get Started</a>
-                </div>
-                
-                <!-- Evaluation Program 3 -->
-                <div class="program-card" data-aos="fade-up" data-aos-delay="300" data-program="evaluation">
-                    <div class="program-card-header">
-                        <h3 class="program-name">Professional</h3>
-                        <div class="program-amount">$100,000</div>
-                        <div class="program-price">$499</div>
-                    </div>
-                    
-                    <ul class="program-features">
-                        <li>12% Profit Target</li>
-                        <li>5% Maximum Daily Loss</li>
-                        <li>10% Maximum Overall Loss</li>
-                        <li>1:70 Profit Split</li>
-                        <li>No Time Limit</li>
-                        <li>MT4, MT5, cTrader</li>
-                    </
+            <p style="color: var(--gray);">&copy; 2023 CapitalForForexTraders. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+</body>
+</html>
