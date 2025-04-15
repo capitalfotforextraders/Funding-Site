@@ -690,33 +690,150 @@
     </footer>
 
     <!-- Payment Modal -->
+    <!-- Payment Modal -->
     <div id="paymentModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Complete Your Payment</h2>
-            <p>Please send <span id="paymentAmount">$100</span> to the following TRC20 address to activate your $<span id="accountSize">1000</span> funded account:</p>
+            
+            <div class="payment-header">
+                <h2>Complete Your Payment</h2>
+                <p>Fill in your details and make payment to activate your funded account</p>
+            </div>
+            
+            <div class="payment-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+            </div>
             
             <div class="payment-details">
-                <div class="payment-address" id="trc20Address">
-                    TCcLRPX1jSiKMoMhbYw4HNePFsuoRa1GVx
+                <div class="payment-amount">
+                    <div class="amount" id="paymentAmount">$100</div>
+                    <div class="account">For <span id="accountSize">$1000</span> Funded Account</div>
                 </div>
                 
-                <div class="qr-code">
-                    <!-- Replace with your actual QR code image -->
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TCcLRPX1jSiKMoMhbYw4HNePFsuoRa1GVx" alt="TRC20 QR Code">
+                <div class="wallet-info">
+                    <h3>Send Payment via USDT (TRC20)</h3>
+                    <p>Scan the QR code or copy the wallet address below</p>
+                    
+                    <div class="wallet-address">
+                        TCcLRPX1jSiKMoMhbYw4HNePFsuoRa1GVx
+                        <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+                    </div>
+                    
+                    <div class="qr-container">
+                        <div class="qr-code">
+                            <!-- Replace this with your actual QR code image -->
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TCcLRPX1jSiKMoMhbYw4HNePFsuoRa1GVx" alt="USDT TRC20 QR Code">
+                        </div>
+                    </div>
                 </div>
                 
-                <p>After payment, click below to send your payment confirmation via WhatsApp:</p>
+                <div class="payment-instructions">
+                    <p><strong>Payment Instructions:</strong></p>
+                    <ol>
+                        <li>Send exact amount shown above to the TRC20 address</li>
+                        <li>Make sure to use TRC20 network only</li>
+                        <li>After payment, click the WhatsApp button below</li>
+                        <li>Send your payment receipt screenshot</li>
+                        <li>Account will be activated within 1 hour after verification</li>
+                    </ol>
+                </div>
                 
-                <a href="https://wa.me/923471394290?text=I%20have%20completed%20the%20payment%20for%20$1000%20account" class="whatsapp-btn" id="whatsappBtn">
-                    <i class="fab fa-whatsapp"></i> I Have Completed Payment
-                </a>
+                <button class="whatsapp-btn" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i> Confirm Payment via WhatsApp
+                </button>
             </div>
         </div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Payment Modal functionality
+        const modal = document.getElementById("paymentModal");
+        const btns = document.querySelectorAll(".get-funded-btn");
+        const span = document.getElementsByClassName("close")[0];
+        const paymentAmount = document.getElementById("paymentAmount");
+        const accountSize = document.getElementById("accountSize");
+        const whatsappBtn = document.getElementById("whatsappBtn");
+
+        // When user clicks on any "Get Funded Now" button
+        btns.forEach(btn => {
+            btn.addEventListener("click", function(e) {
+                e.preventDefault();
+                const amount = this.getAttribute("data-amount");
+                const account = this.getAttribute("data-account");
+                
+                // Update modal content
+                paymentAmount.textContent = "$" + amount;
+                accountSize.textContent = "$" + account;
+                
+                // Update WhatsApp link with form data
+                whatsappBtn.onclick = function() {
+                    const name = document.getElementById("fullName").value;
+                    const email = document.getElementById("email").value;
+                    
+                    if(!name || !email) {
+                        alert("Please fill in your name and email first");
+                        return false;
+                    }
+                    
+                    const message = `Payment Confirmation%0A%0AName: ${name}%0AEmail: ${email}%0AAccount: $${account}%0AAmount: $${amount}%0A%0AI have completed the payment. Here's my payment receipt:`;
+                    window.open(`https://wa.me/923471394290?text=${message}`, '_blank');
+                };
+                
+                // Show modal
+                modal.style.display = "block";
+            });
+        });
+
+        // Close modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Copy wallet address function
+        function copyToClipboard() {
+            const address = "TCcLRPX1jSiKMoMhbYw4HNePFsuoRa1GVx"; // Replace with your actual address
+            navigator.clipboard.writeText(address).then(() => {
+                alert("Wallet address copied to clipboard!");
+            });
+        }
+
+        // Form validation before WhatsApp
+        whatsappBtn.addEventListener("click", function(e) {
+            const name = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            
+            if(!name || !email) {
+                e.preventDefault();
+                alert("Please fill in your name and email first");
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
         // Initialize animations
         AOS.init({
             duration: 800,
@@ -759,7 +876,7 @@
                 accountSize.textContent = account;
                 
                 // Update WhatsApp link
-                whatsappBtn.href = `https://wa.me/923123456789?text=I%20have%20completed%20the%20payment%20for%20$${amount}%20($${account}%20account)`;
+                whatsappBtn.href = `https://wa.me/923471394290?text=I%20have%20completed%20the%20payment%20for%20$${amount}%20($${account}%20account)`;
                 
                 // Show modal
                 modal.style.display = "block";
