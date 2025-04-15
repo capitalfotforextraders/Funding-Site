@@ -1,52 +1,71 @@
-/* Advanced Background Design */
-.background-design {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CapitalForForexTraders - Instant Funding</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+:root {
+--primary: #FF0000;
+--secondary: #FFD700;
+--accent: #00FF00;
+--dark: #0A0A0A;
+--light: #FFFFFF;
+--gray: #888888;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', sans-serif;
+}
+
+body {
+background-color: var(--dark);
+color: var(--light);
+position: relative;
+overflow-x: hidden;
+}
+
+/* Animated Background Elements */
+body::before {
+content: '';
+position: fixed;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(45deg,
+rgba(255,0,0,0.05) 0%,
+rgba(255,215,0,0.05) 50%,
+rgba(0,255,0,0.05) 100%);
+animation: rotateBG 20s linear infinite;
+z-index: -2;
+}
+
+@keyframes rotateBG {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+/* Trading View Grid Pattern */
+body::after {
+content: '';
 position: fixed;
 top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-z-index: -1;
-overflow: hidden;
-}
-
-.bg-layer-1 {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.1) 0%, transparent 25%),
-radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 25%),
-radial-gradient(circle at 50% 20%, rgba(0, 255, 0, 0.1) 0%, transparent 25%);
-opacity: 0.5;
-animation: pulse 15s infinite alternate;
-}
-
-.bg-layer-2 {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
 background-image:
-linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px),
-linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px);
-background-size: 40px 40px;
+linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px);
+background-size: 20px 20px;
+z-index: -1;
 opacity: 0.3;
-}
-
-.bg-layer-3 {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(30, 30, 30, 0.5) 100%);
-}
-
-@keyframes pulse {
-0% { opacity: 0.3; }
-100% { opacity: 0.7; }
 }
 
 /* Floating Forex Elements */
@@ -63,194 +82,42 @@ overflow: hidden;
 
 .floating-element {
 position: absolute;
-opacity: 0.15;
+opacity: 0.1;
 animation: float 15s infinite linear;
-font-weight: bold;
-filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
 }
 
 @keyframes float {
-0% { transform: translateY(100vh) rotate(0deg); }
-100% { transform: translateY(-100px) rotate(360deg); }
+0% { transform: translateY(0) rotate(0deg); }
+100% { transform: translateY(-100vh) rotate(360deg); }
 }
 
-/* Candlestick Animation */
-.candlestick {
-position: absolute;
-width: 3px;
-background: linear-gradient(to bottom, var(--accent), transparent);
-opacity: 0.2;
-animation: grow 8s infinite ease-in-out;
-}
-
-.candlestick::before {
-content: '';
-position: absolute;
-width: 8px;
-height: 3px;
-background: var(--light);
-left: -2.5px;
-border-radius: 3px;
-}
-
-@keyframes grow {
-0%, 100% { height: 0; opacity: 0; }
-50% { height: 150px; opacity: 0.3; }
-}
-
-/* Container */
 .container {
 max-width: 1200px;
 margin: 0 auto;
 padding: 0 20px;
-position: relative;
-z-index: 1;
 }
 
 /* Header */
 header {
-background: rgba(10, 10, 10, 0.85);
+background: rgba(10, 10, 10, 0.95);
 padding: 20px 0;
 position: fixed;
 width: 100%;
 top: 0;
 z-index: 1000;
 border-bottom: 2px solid var(--primary);
-backdrop-filter: blur(8px);
-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+backdrop-filter: blur(5px);
 }
 
 .logo {
 font-size: 2rem;
 font-weight: 700;
 color: var(--light);
-text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .logo span {
 color: var(--primary);
 }
-
-/* Hero Section */
-.hero {
-padding: 180px 0 120px;
-text-align: center;
-position: relative;
-overflow: hidden;
-}
-
-.hero::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(45deg, rgba(10, 10, 10, 0.9), rgba(26, 26, 26, 0.7));
-z-index: -1;
-}
-
-.hero h1 {
-font-size: 3.5rem;
-margin-bottom: 20px;
-background: linear-gradient(90deg, var(--primary), var(--secondary));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
-}
-
-/* Rest of your existing CSS styles... */
-/* [Previous CSS styles for stats, pricing, platforms, reviews, FAQ, footer, etc.] */
-
-</style>
-</head>
-<body>
-<!-- Advanced Background Design -->
-<div class="background-design">
-<div class="bg-layer-1"></div>
-<div class="bg-layer-2"></div>
-<div class="bg-layer-3"></div>
-</div>
-
-<!-- Floating Forex Elements -->
-<div class="floating-elements">
-<div class="floating-element" style="left: 10%; top: 20%; font-size: 24px; animation-delay: 0s;">$</div>
-<div class="floating-element" style="left: 25%; top: 50%; font-size: 24px; animation-delay: 2s;">€</div>
-<div class="floating-element" style="left: 75%; top: 30%; font-size: 24px; animation-delay: 4s;">£</div>
-<div class="floating-element" style="left: 85%; top: 70%; font-size: 24px; animation-delay: 6s;">¥</div>
-<div class="floating-element" style="left: 50%; top: 80%; font-size: 24px; animation-delay: 8s;">₿</div>
-
-<!-- Candlesticks -->
-<div class="candlestick" style="left: 15%; top: 40%; animation-delay: 1s;"></div>
-<div class="candlestick" style="left: 30%; top: 60%; animation-delay: 3s;"></div>
-<div class="candlestick" style="left: 70%; top: 30%; animation-delay: 5s;"></div>
-<div class="candlestick" style="left: 85%; top: 50%; animation-delay: 7s;"></div>
-</div>
-
-<!-- Header -->
-<header>
-<div class="container">
-<div class="logo">Capitalfor<span>Forex</span>Traders</div>
-</div>
-</header>
-
-<!-- Hero Section -->
-<section class="hero">
-<div class="container">
-<h1 data-aos="fade-up">Get Instant Funding Today</h1>
-<h1 data-aos="fade-up">On Your Trusted Broker (Exness, FBS, IC Markets)</h1>
-<p data-aos="fade-up" data-aos-delay="200" style="color: var(--gray); margin-bottom: 30px;">
-Start trading with our capital in minutes - No evaluation required!
-</p>
-<a href="#pricing" class="btn" data-aos="fade-up" data-aos-delay="400">View Funding Options</a>
-</div>
-</section>
-
-<!-- [Rest of your HTML content...] -->
-<!-- [Stats, Pricing, Platforms, Reviews, FAQ, Footer sections] -->
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-// Initialize animations
-AOS.init({
-duration: 800,
-easing: 'ease-in-out',
-once: true
-});
-
-// Create additional floating elements dynamically
-document.addEventListener('DOMContentLoaded', function() {
-const floatingContainer = document.querySelector('.floating-elements');
-const symbols = ['$', '€', '£', '¥', '₿', '₽', '₹', '₩'];
-
-for (let i = 0; i < 10; i++) {
-const element = document.createElement('div');
-element.className = 'floating-element';
-element.style.left = Math.random() * 100 + '%';
-element.style.top = Math.random() * 100 + '%';
-element.style.fontSize = (Math.random() * 20 + 16) + 'px';
-element.style.animationDelay = Math.random() * 10 + 's';
-element.style.animationDuration = (Math.random() * 10 + 10) + 's';
-element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-floatingContainer.appendChild(element);
-}
-
-// Create additional candlesticks
-for (let i = 0; i < 8; i++) {
-const candle = document.createElement('div');
-candle.className = 'candlestick';
-candle.style.left = Math.random() * 100 + '%';
-candle.style.top = Math.random() * 100 + '%';
-candle.style.animationDelay = Math.random() * 10 + 's';
-candle.style.animationDuration = (Math.random() * 5 + 5) + 's';
-floatingContainer.appendChild(candle);
-}
-});
-
-// [Rest of your JavaScript functionality...]
-</script>
-</body>
-</html>
 
 /* Hero Section */
 .hero {
@@ -1648,6 +1515,268 @@ imageObserver.observe(img);
 });
 }
 });
+</script>
+</body>
+</html>
+
+
+
+
+Muhammad Muzammil
+10:04 PM (9 minutes ago)
+to me
+
+
+/* Advanced Background Design */
+.background-design {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+overflow: hidden;
+}
+
+.bg-layer-1 {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.1) 0%, transparent 25%),
+radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 25%),
+radial-gradient(circle at 50% 20%, rgba(0, 255, 0, 0.1) 0%, transparent 25%);
+opacity: 0.5;
+animation: pulse 15s infinite alternate;
+}
+
+.bg-layer-2 {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image:
+linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+background-size: 40px 40px;
+opacity: 0.3;
+}
+
+.bg-layer-3 {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(30, 30, 30, 0.5) 100%);
+}
+
+@keyframes pulse {
+0% { opacity: 0.3; }
+100% { opacity: 0.7; }
+}
+
+/* Floating Forex Elements */
+.floating-elements {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: -1;
+overflow: hidden;
+}
+
+.floating-element {
+position: absolute;
+opacity: 0.15;
+animation: float 15s infinite linear;
+font-weight: bold;
+filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+}
+
+@keyframes float {
+0% { transform: translateY(100vh) rotate(0deg); }
+100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Candlestick Animation */
+.candlestick {
+position: absolute;
+width: 3px;
+background: linear-gradient(to bottom, var(--accent), transparent);
+opacity: 0.2;
+animation: grow 8s infinite ease-in-out;
+}
+
+.candlestick::before {
+content: '';
+position: absolute;
+width: 8px;
+height: 3px;
+background: var(--light);
+left: -2.5px;
+border-radius: 3px;
+}
+
+@keyframes grow {
+0%, 100% { height: 0; opacity: 0; }
+50% { height: 150px; opacity: 0.3; }
+}
+
+/* Container */
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+position: relative;
+z-index: 1;
+}
+
+/* Header */
+header {
+background: rgba(10, 10, 10, 0.85);
+padding: 20px 0;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+border-bottom: 2px solid var(--primary);
+backdrop-filter: blur(8px);
+box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+font-size: 2rem;
+font-weight: 700;
+color: var(--light);
+text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo span {
+color: var(--primary);
+}
+
+/* Hero Section */
+.hero {
+padding: 180px 0 120px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.hero::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(45deg, rgba(10, 10, 10, 0.9), rgba(26, 26, 26, 0.7));
+z-index: -1;
+}
+
+.hero h1 {
+font-size: 3.5rem;
+margin-bottom: 20px;
+background: linear-gradient(90deg, var(--primary), var(--secondary));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Rest of your existing CSS styles... */
+/* [Previous CSS styles for stats, pricing, platforms, reviews, FAQ, footer, etc.] */
+
+</style>
+</head>
+<body>
+<!-- Advanced Background Design -->
+<div class="background-design">
+<div class="bg-layer-1"></div>
+<div class="bg-layer-2"></div>
+<div class="bg-layer-3"></div>
+</div>
+
+<!-- Floating Forex Elements -->
+<div class="floating-elements">
+<div class="floating-element" style="left: 10%; top: 20%; font-size: 24px; animation-delay: 0s;">$</div>
+<div class="floating-element" style="left: 25%; top: 50%; font-size: 24px; animation-delay: 2s;">€</div>
+<div class="floating-element" style="left: 75%; top: 30%; font-size: 24px; animation-delay: 4s;">£</div>
+<div class="floating-element" style="left: 85%; top: 70%; font-size: 24px; animation-delay: 6s;">¥</div>
+<div class="floating-element" style="left: 50%; top: 80%; font-size: 24px; animation-delay: 8s;">₿</div>
+
+<!-- Candlesticks -->
+<div class="candlestick" style="left: 15%; top: 40%; animation-delay: 1s;"></div>
+<div class="candlestick" style="left: 30%; top: 60%; animation-delay: 3s;"></div>
+<div class="candlestick" style="left: 70%; top: 30%; animation-delay: 5s;"></div>
+<div class="candlestick" style="left: 85%; top: 50%; animation-delay: 7s;"></div>
+</div>
+
+<!-- Header -->
+<header>
+<div class="container">
+<div class="logo">Capitalfor<span>Forex</span>Traders</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+<div class="container">
+<h1 data-aos="fade-up">Get Instant Funding Today</h1>
+<h1 data-aos="fade-up">On Your Trusted Broker (Exness, FBS, IC Markets)</h1>
+<p data-aos="fade-up" data-aos-delay="200" style="color: var(--gray); margin-bottom: 30px;">
+Start trading with our capital in minutes - No evaluation required!
+</p>
+<a href="#pricing" class="btn" data-aos="fade-up" data-aos-delay="400">View Funding Options</a>
+</div>
+</section>
+
+<!-- [Rest of your HTML content...] -->
+<!-- [Stats, Pricing, Platforms, Reviews, FAQ, Footer sections] -->
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+// Initialize animations
+AOS.init({
+duration: 800,
+easing: 'ease-in-out',
+once: true
+});
+
+// Create additional floating elements dynamically
+document.addEventListener('DOMContentLoaded', function() {
+const floatingContainer = document.querySelector('.floating-elements');
+const symbols = ['$', '€', '£', '¥', '₿', '₽', '₹', '₩'];
+
+for (let i = 0; i < 10; i++) {
+const element = document.createElement('div');
+element.className = 'floating-element';
+element.style.left = Math.random() * 100 + '%';
+element.style.top = Math.random() * 100 + '%';
+element.style.fontSize = (Math.random() * 20 + 16) + 'px';
+element.style.animationDelay = Math.random() * 10 + 's';
+element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+floatingContainer.appendChild(element);
+}
+
+// Create additional candlesticks
+for (let i = 0; i < 8; i++) {
+const candle = document.createElement('div');
+candle.className = 'candlestick';
+candle.style.left = Math.random() * 100 + '%';
+candle.style.top = Math.random() * 100 + '%';
+candle.style.animationDelay = Math.random() * 10 + 's';
+candle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+floatingContainer.appendChild(candle);
+}
+});
+
+// [Rest of your JavaScript functionality...]
 </script>
 </body>
 </html>
