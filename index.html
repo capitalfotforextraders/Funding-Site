@@ -276,6 +276,89 @@
             text-align: center;
             border-top: 2px solid var(--primary);
         }
+
+        /* Payment Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            background-color: #1A1A1A;
+            margin: 10% auto;
+            padding: 30px;
+            border: 2px solid var(--secondary);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: var(--gray);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--light);
+        }
+
+        .payment-details {
+            margin: 20px 0;
+        }
+
+        .payment-address {
+            background: #0A0A0A;
+            padding: 15px;
+            border-radius: 5px;
+            word-break: break-all;
+            margin: 15px 0;
+            font-family: monospace;
+            border: 1px solid var(--primary);
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #25D366;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -354,7 +437,7 @@
                         <li>✓ upto 80% Profit Split</li>
                         <li>✓ Upto Daily Payouts</li>
                     </ul>
-                    <a href="#" class="btn">Get Funded Now</a>
+                    <a href="#" class="btn get-funded-btn" data-amount="100" data-account="1000">Get Funded Now</a>
                 </div>
 
                 <!-- $2,500 Account -->
@@ -370,7 +453,7 @@
                         <li>✓ Upto 80% Profit Split</li> 
                         <li>✓ Upto Daily Payouts</li>
                     </ul>
-                    <a href="#" class="btn">Get Funded Now</a>
+                    <a href="#" class="btn get-funded-btn" data-amount="250" data-account="2500">Get Funded Now</a>
                 </div>
 
                 <!-- $5,000 Account -->
@@ -386,7 +469,7 @@
                         <li>✓ Upto 80% Profit Split</li>
                         <li>✓ Upto Daily Payouts</li>
                     </ul>
-                    <a href="#" class="btn">Get Funded Now</a>
+                    <a href="#" class="btn get-funded-btn" data-amount="500" data-account="5000">Get Funded Now</a>
                 </div>
             </div>
         </div>
@@ -409,14 +492,14 @@
                         <li>✓ upto 80% Profit Split</li>
                         <li>✓ Upto Daily Payouts</li>
                     </ul>
-                    <a href="#" class="btn">Get Funded Now</a>
+                    <a href="#" class="btn get-funded-btn" data-amount="1000" data-account="10000">Get Funded Now</a>
                 </div>
 
                 <!-- $15,000 Account -->
                 <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
                     <h3>Professional Account</h3>
                     <div class="price">
-                        $1,5000 <span>for $1,500</span>
+                        $15,000 <span>for $1,500</span>
                     </div>
                     <ul style="list-style: none; text-align: left; margin: 20px 0;">
                         <li>✓ 1:200 Leverage</li>
@@ -425,7 +508,7 @@
                         <li>✓ Upto 80% Profit Split</li> 
                         <li>✓ Upto Daily Payouts</li>
                     </ul>
-                    <a href="#" class="btn">Get Funded Now</a>
+                    <a href="#" class="btn get-funded-btn" data-amount="1500" data-account="15000">Get Funded Now</a>
                 </div>
 
                 <!-- $25,000 Account -->
@@ -441,7 +524,7 @@
                         <li>✓ Upto 80% Profit Split</li>
                         <li>✓ Upto Daily Payouts</li>
                     </ul>
-                    <a href="#" class="btn">Get Funded Now</a>
+                    <a href="#" class="btn get-funded-btn" data-amount="2500" data-account="25000">Get Funded Now</a>
                 </div>
             </div>
         </div>
@@ -606,6 +689,32 @@
         </div>
     </footer>
 
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Complete Your Payment</h2>
+            <p>Please send <span id="paymentAmount">$100</span> to the following TRC20 address to activate your $<span id="accountSize">1000</span> funded account:</p>
+            
+            <div class="payment-details">
+                <div class="payment-address" id="trc20Address">
+                    TCcLRPX1jSiKMoMhbYw4HNePFsuoRa1GVx
+                </div>
+                
+                <div class="qr-code">
+                    <!-- Replace with your actual QR code image -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TYJ76mUwHHqJYvVQZ5jZ5jZ5jZ5jZ5jZ5j" alt="TRC20 QR Code">
+                </div>
+                
+                <p>After payment, click below to send your payment confirmation via WhatsApp:</p>
+                
+                <a href="https://wa.me/923471394290?text=I%20have%20completed%20the%20payment%20for%20$1000%20account" class="whatsapp-btn" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i> I Have Completed Payment
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Initialize animations
@@ -629,6 +738,45 @@
                 });
             });
         });
+
+        // Payment Modal functionality
+        const modal = document.getElementById("paymentModal");
+        const btns = document.querySelectorAll(".get-funded-btn");
+        const span = document.getElementsByClassName("close")[0];
+        const paymentAmount = document.getElementById("paymentAmount");
+        const accountSize = document.getElementById("accountSize");
+        const whatsappBtn = document.getElementById("whatsappBtn");
+
+        // When user clicks on any "Get Funded Now" button
+        btns.forEach(btn => {
+            btn.addEventListener("click", function(e) {
+                e.preventDefault();
+                const amount = this.getAttribute("data-amount");
+                const account = this.getAttribute("data-account");
+                
+                // Update modal content
+                paymentAmount.textContent = "$" + amount;
+                accountSize.textContent = account;
+                
+                // Update WhatsApp link
+                whatsappBtn.href = `https://wa.me/923123456789?text=I%20have%20completed%20the%20payment%20for%20$${amount}%20($${account}%20account)`;
+                
+                // Show modal
+                modal.style.display = "block";
+            });
+        });
+
+        // When user clicks on (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
