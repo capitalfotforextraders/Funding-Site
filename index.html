@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CapitalForForexTraders - Instant Funding</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
@@ -28,51 +27,6 @@
             background-color: var(--dark);
             color: var(--light);
             position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 40% 60%, rgba(0, 255, 0, 0.1) 0%, transparent 20%);
-            z-index: -2;
-            animation: float 15s ease infinite alternate;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            50% {
-                transform: translateY(-50px) translateX(50px);
-            }
-            100% {
-                transform: translateY(50px) translateX(-50px);
-            }
-        }
-
-        /* Trading Pattern Overlay */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(to right, rgba(10,10,10,0.1) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(10,10,10,0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-            opacity: 0.5;
         }
 
         .container {
@@ -90,54 +44,21 @@
             top: 0;
             z-index: 1000;
             border-bottom: 2px solid var(--primary);
-            backdrop-filter: blur(5px);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .logo {
             font-size: 2rem;
             font-weight: 700;
             color: var(--light);
-            text-decoration: none;
         }
 
         .logo span {
             color: var(--primary);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
         /* Hero Section */
         .hero {
-            padding: 180px 0 100px;
+            padding: 150px 0 100px;
             background: linear-gradient(45deg, var(--dark), #1A1A1A);
             text-align: center;
             position: relative;
@@ -151,7 +72,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+            background: url('images/forex-pattern.webp') center/cover;
             opacity: 0.1;
             z-index: -1;
         }
@@ -165,17 +86,9 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 800px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
         /* Stats Section */
         .stats {
-            padding: 80px 0;
+            padding: 60px 0;
             background: #111111;
             text-align: center;
         }
@@ -195,12 +108,6 @@
             border-radius: 10px;
             border: 1px solid #333;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--secondary);
         }
 
         .stat-number {
@@ -249,13 +156,6 @@
             border-radius: 3px;
         }
 
-        .section-title p {
-            color: var(--gray);
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 20px auto 0;
-        }
-
         .pricing-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -277,11 +177,6 @@
             transform: translateY(-10px);
             border-color: var(--secondary);
             box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
         }
 
         .price {
@@ -315,30 +210,6 @@
         .price span {
             font-size: 1.5rem;
             color: var(--light);
-            display: block;
-            margin-top: 5px;
-            font-weight: 400;
-        }
-
-        .pricing-features {
-            list-style: none;
-            text-align: left;
-            margin: 20px 0;
-        }
-
-        .pricing-features li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .pricing-features li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--accent);
         }
 
         .btn {
@@ -400,7 +271,6 @@
             border: 2px solid var(--secondary);
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            text-align: center;
         }
 
         .platform-card:hover {
@@ -411,7 +281,6 @@
         .platform-card img {
             width: 100%;
             max-width: 150px;
-            height: auto;
             margin: 0 auto 20px;
             display: block;
             transition: transform 0.3s;
@@ -419,252 +288,6 @@
 
         .platform-card:hover img {
             transform: scale(1.1);
-        }
-
-        .platform-card h3 {
-            margin-bottom: 15px;
-        }
-
-        .platform-card p {
-            color: var(--gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* Success Stories Section */
-        .success-stories {
-            padding: 100px 0;
-            background: #0A0A0A;
-        }
-        
-        .stories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .story-card {
-            background: #1A1A1A;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid #333;
-        }
-        
-        .story-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            border-color: var(--secondary);
-        }
-        
-        .story-header {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            background: rgba(255,215,0,0.05);
-            border-bottom: 1px solid #333;
-        }
-        
-        .story-header img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--secondary);
-            margin-right: 15px;
-        }
-        
-        .trader-info h4 {
-            margin-bottom: 5px;
-        }
-        
-        .trader-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        .story-content {
-            padding: 20px;
-        }
-        
-        .profit-badge {
-            background: rgba(0,255,0,0.1);
-            color: var(--accent);
-            padding: 8px 15px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-weight: 600;
-            border: 1px solid var(--accent);
-        }
-        
-        .profit-badge span {
-            color: var(--secondary);
-            font-weight: 700;
-        }
-        
-        /* Trading Strategies Section */
-        .strategies {
-            padding: 100px 0;
-            background: #111111;
-        }
-        
-        .strategy-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .strategy-card {
-            background: #1A1A1A;
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid #333;
-        }
-        
-        .strategy-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            border-color: var(--primary);
-        }
-        
-        .strategy-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(255,0,0,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.8rem;
-            color: var(--primary);
-            transition: all 0.3s;
-        }
-        
-        .strategy-card:hover .strategy-icon {
-            background: rgba(255,215,0,0.1);
-            color: var(--secondary);
-            transform: scale(1.1);
-        }
-        
-        .strategy-card h3 {
-            margin-bottom: 15px;
-        }
-        
-        /* Comparison Section */
-        .comparison {
-            padding: 100px 0;
-            background: #0A0A0A;
-        }
-        
-        .comparison-table {
-            background: #1A1A1A;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 50px;
-            border: 1px solid #333;
-        }
-        
-        .comparison-header {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            background: rgba(255,0,0,0.1);
-            font-weight: 600;
-            border-bottom: 1px solid #333;
-        }
-        
-        .comparison-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            padding: 15px 20px;
-            border-bottom: 1px solid #333;
-        }
-        
-        .comparison-row:last-child {
-            border-bottom: none;
-        }
-        
-        .comparison-header div {
-            padding: 15px 20px;
-        }
-        
-        .feature {
-            font-weight: 600;
-        }
-        
-        .us {
-            color: var(--accent);
-            font-weight: 600;
-        }
-        
-        .others {
-            color: var(--gray);
-        }
-        
-        .fa-check {
-            color: var(--accent);
-        }
-        
-        .fa-times {
-            color: var(--primary);
-        }
-        
-        /* CTA Section */
-        .cta {
-            padding: 100px 0;
-            background: linear-gradient(45deg, #1A1A1A, #0A0A0A);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
-            opacity: 0.1;
-            z-index: -1;
-        }
-        
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .cta p {
-            color: var(--gray);
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .secondary-btn {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            box-shadow: none;
-        }
-        
-        .secondary-btn:hover {
-            background: rgba(255,215,0,0.1);
         }
 
         /* Reviews Section */
@@ -721,22 +344,9 @@
             object-fit: cover;
         }
 
-        .reviewer-info h4 {
-            margin-bottom: 5px;
-        }
-
-        .reviewer-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
         .rating {
             color: var(--secondary);
             margin: 10px 0;
-        }
-
-        .review-text {
-            line-height: 1.6;
         }
 
         /* FAQ Section */
@@ -796,7 +406,6 @@
 
         .faq-answer p {
             padding: 20px 0;
-            line-height: 1.6;
         }
 
         .faq-item.active .faq-answer {
@@ -819,20 +428,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+            background: url('images/footer-pattern.webp') center/cover;
             opacity: 0.1;
             z-index: -1;
-        }
-
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--light);
-            margin-bottom: 20px;
-        }
-
-        .footer-logo span {
-            color: var(--primary);
         }
 
         .footer-links {
@@ -869,11 +467,6 @@
         .social-links a:hover {
             color: var(--secondary);
             transform: translateY(-5px);
-        }
-
-        .copyright {
-            color: var(--gray);
-            font-size: 0.9rem;
         }
 
         /* Payment Modal */
@@ -928,25 +521,8 @@
             color: var(--light);
         }
 
-        .modal h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            color: var(--secondary);
-        }
-
         .payment-details {
             margin: 20px 0;
-        }
-
-        .payment-method {
-            margin-bottom: 20px;
-        }
-
-        .payment-method img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            margin-bottom: 10px;
         }
 
         .payment-address {
@@ -1085,74 +661,8 @@
             background-color: var(--secondary);
         }
 
-        /* Notification Slides */
-        .notifications {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-            max-width: 300px;
-        }
-
-        .notification {
-            background: rgba(10,10,10,0.95);
-            border-left: 4px solid var(--secondary);
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transform: translateX(-150%);
-            animation: slideIn 0.5s forwards;
-            display: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .notification::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            z-index: -1;
-        }
-
-        @keyframes slideIn {
-            to { transform: translateX(0); }
-        }
-
-        .notification i {
-            color: var(--accent);
-            margin-right: 10px;
-        }
-
-        .notification span {
-            color: var(--secondary);
-            font-weight: bold;
-        }
-
         /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-        }
-
         @media (max-width: 768px) {
-            .hero {
-                padding: 150px 0 80px;
-            }
-            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -1185,20 +695,9 @@
                 bottom: 80px;
                 right: 20px;
             }
-
-            .notifications {
-                max-width: 250px;
-                bottom: 10px;
-                left: 10px;
-            }
-            
-            .comparison-header,
-            .comparison-row {
-                grid-template-columns: 1.5fr 1fr 1fr;
-            }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 480px) {
             .hero h1 {
                 font-size: 2rem;
             }
@@ -1211,47 +710,14 @@
                 width: 100%;
                 max-width: 300px;
             }
-
-            .notifications {
-                max-width: 200px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .comparison-header,
-            .comparison-row {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .comparison-header div:nth-child(1),
-            .comparison-row div:nth-child(1) {
-                display: none;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
-            <a href="#" class="logo">Capitalfor<span>Forex</span>Traders</a>
-            <nav class="nav-links">
-                <a href="#pricing">Funding</a>
-                <a href="#platforms">Platforms</a>
-                <a href="#reviews">Reviews</a>
-                <a href="#faq">FAQ</a>
-            </nav>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+        <div class="container">
+            <div class="logo">Capitalfor<span>Forex</span>Traders</div>
         </div>
     </header>
 
@@ -1260,16 +726,10 @@
         <div class="container">
             <h1 data-aos="fade-up">Get Instant Funding Today</h1> 
             <h1 data-aos="fade-up">On Your Trusted Broker (Exness, FBS, IC Markets)</h1> 
-            <p data-aos="fade-up" data-aos-delay="200">
-                Start trading with our capital in minutes - No evaluation required! We provide instant funding accounts
-                            <p data-aos="fade-up" data-aos-delay="200">
-                Start trading with our capital in minutes - No evaluation required! We provide instant funding accounts
-                with flexible rules and daily payouts.
+            <p data-aos="fade-up" data-aos-delay="200" style="color: var(--gray); margin-bottom: 30px;">
+                Start trading with our capital in minutes - No evaluation required!
             </p>
-            <div data-aos="fade-up" data-aos-delay="400" style="margin-top: 40px;">
-                <a href="#pricing" class="btn" style="margin-right: 15px;">View Funding Options</a>
-                <a href="https://wa.me/923471394290" class="btn secondary-btn">Chat With Us</a>
-            </div>
+            <a href="#pricing" class="btn" data-aos="fade-up" data-aos-delay="400">View Funding Options</a>
         </div>
     </section>
 
@@ -1317,7 +777,6 @@
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Funding Programs</h2>
-                <p>Choose the perfect account size for your trading style and experience level</p>
             </div>
             
             <div class="pricing-cards">
@@ -1327,12 +786,12 @@
                     <div class="price">
                         $1000 <span>for $100</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li>1:200 Leverage</li>
-                        <li>10% Daily Drawdown</li>
-                        <li>30% Max Loss</li>
-                        <li>Up to 80% Profit Split</li>
-                        <li>Daily Payouts</li>
+                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 1:200 Leverage</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 10% Daily Drawdown</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 30% Max Loss</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto 80% Profit Split</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto Daily Payouts</li>
                     </ul>
                     <a href="#" class="btn get-funded-btn" data-amount="100" data-account="1000">Get Funded Now</a>
                 </div>
@@ -1343,12 +802,12 @@
                     <div class="price">
                         $2,500 <span>for $250</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li>1:200 Leverage</li>
-                        <li>10% Daily Drawdown</li>
-                        <li>30% Max Loss</li>
-                        <li>Up to 80% Profit Split</li>
-                        <li>Daily Payouts</li>
+                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 1:200 Leverage</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 10% Daily Drawdown</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 30% Max Loss</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto 80% Profit Split</li> 
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto Daily Payouts</li>
                     </ul>
                     <a href="#" class="btn get-funded-btn" data-amount="250" data-account="2500">Get Funded Now</a>
                 </div>
@@ -1359,12 +818,12 @@
                     <div class="price">
                         $5,000 <span>for $500</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li>1:200 Leverage</li>
-                        <li>10% Daily Drawdown</li>
-                        <li>30% Max Loss</li>
-                        <li>Up to 80% Profit Split</li>
-                        <li>Daily Payouts</li>
+                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 1:200 Leverage</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 10% Daily Drawdown</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 30% Max Loss</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto 80% Profit Split</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto Daily Payouts</li>
                     </ul>
                     <a href="#" class="btn get-funded-btn" data-amount="500" data-account="5000">Get Funded Now</a>
                 </div>
@@ -1376,7 +835,6 @@
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Premium Funding</h2>
-                <p>For experienced traders looking to scale their profits</p>
             </div>
             
             <div class="pricing-cards">
@@ -1386,12 +844,12 @@
                     <div class="price">
                         $10,000 <span>for $1,000</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li>1:200 Leverage</li>
-                        <li>10% Daily Drawdown</li>
-                        <li>30% Max Loss</li>
-                        <li>Up to 80% Profit Split</li>
-                        <li>Daily Payouts</li>
+                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 1:200 Leverage</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 10% Daily Drawdown</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 30% Max Loss</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto 80% Profit Split</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto Daily Payouts</li>
                     </ul>
                     <a href="#" class="btn get-funded-btn" data-amount="1000" data-account="10000">Get Funded Now</a>
                 </div>
@@ -1402,12 +860,12 @@
                     <div class="price">
                         $15,000 <span>for $1,500</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li>1:200 Leverage</li>
-                        <li>10% Daily Drawdown</li>
-                        <li>30% Max Loss</li>
-                        <li>Up to 80% Profit Split</li>
-                        <li>Daily Payouts</li>
+                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 1:200 Leverage</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 10% Daily Drawdown</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 30% Max Loss</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto 80% Profit Split</li> 
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto Daily Payouts</li>
                     </ul>
                     <a href="#" class="btn get-funded-btn" data-amount="1500" data-account="15000">Get Funded Now</a>
                 </div>
@@ -1418,12 +876,12 @@
                     <div class="price">
                         $25,000 <span>for $2,500</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li>1:200 Leverage</li>
-                        <li>10% Daily Drawdown</li>
-                        <li>30% Max Loss</li>
-                        <li>Up to 80% Profit Split</li>
-                        <li>Daily Payouts</li>
+                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 1:200 Leverage</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 10% Daily Drawdown</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 30% Max Loss</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto 80% Profit Split</li>
+                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto Daily Payouts</li>
                     </ul>
                     <a href="#" class="btn get-funded-btn" data-amount="2500" data-account="25000">Get Funded Now</a>
                 </div>
@@ -1432,22 +890,21 @@
     </section>
 
     <!-- Platforms Section -->
-    <section class="platforms" id="platforms">
+    <section class="platforms">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Supported Platforms</h2>
-                <p>Trade on the industry's most popular and reliable trading platforms</p>
             </div>
             
             <div class="platform-cards">
                 <div class="platform-card" data-aos="fade-up">
-                    <img src="https://www.metatrader5.com/img/metatrader5-logo.svg" alt="MetaTrader 5" loading="lazy">
+                    <img src="images/mt5-icon.webp" alt="MetaTrader 5" loading="lazy">
                     <h3>MetaTrader 5</h3>
                     <p>The most advanced trading platform with superior tools for technical analysis and algorithmic trading</p>
                 </div>
                 
                 <div class="platform-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://www.metatrader4.com/img/metatrader4-logo.svg" alt="MetaTrader 4" loading="lazy">
+                    <img src="images/mt4-icon.webp" alt="MetaTrader 4" loading="lazy">
                     <h3>MetaTrader 4</h3>
                     <p>The world's most popular trading platform with reliable execution and extensive functionality</p>
                 </div>
@@ -1455,173 +912,20 @@
         </div>
     </section>
 
-    <!-- Success Stories Section -->
-    <section class="success-stories">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Trader Success Stories</h2>
-                <p class="subtitle" data-aos="fade-up" data-aos-delay="200">Real traders achieving real results with our funding</p>
-            </div>
-            
-            <div class="stories-grid">
-                <div class="story-card" data-aos="fade-up">
-                    <div class="story-header">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Trader" loading="lazy">
-                        <div class="trader-info">
-                            <h4>Ahmed Khan</h4>
-                            <p>$25,000 Account</p>
-                        </div>
-                    </div>
-                    <div class="story-content">
-                        <div class="profit-badge">
-                            <span>$3,850</span> First Payout
-                        </div>
-                        <p>"Within 2 weeks of getting funded, I made my first profitable trade series and received my payout in just 48 hours. The process was seamless!"</p>
-                    </div>
-                </div>
-                
-                <div class="story-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="story-header">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Trader" loading="lazy">
-                        <div class="trader-info">
-                            <h4>Fatima Ali</h4>
-                            <p>$10,000 Account</p>
-                        </div>
-                    </div>
-                    <div class="story-content">
-                        <div class="profit-badge">
-                            <span>$1,200</span> Weekly Payout
-                        </div>
-                        <p>"I've been consistently making profits and getting weekly payouts. The support team is always available to help with any questions."</p>
-                    </div>
-                </div>
-                
-                <div class="story-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="story-header">
-                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Trader" loading="lazy">
-                        <div class="trader-info">
-                            <h4>Usman Malik</h4>
-                            <p>$50,000 Account</p>
-                        </div>
-                    </div>
-                    <div class="story-content">
-                        <div class="profit-badge">
-                            <span>$8,250</span> Monthly Profit
-                        </div>
-                        <p>"Scaling up to the $50k account was the best decision. The higher capital allows me to implement my strategy more effectively."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trading Strategies Section -->
-    <section class="strategies">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Supported Trading Strategies</h2>
-                <p class="subtitle" data-aos="fade-up" data-aos-delay="200">Trade your way with our flexible rules</p>
-            </div>
-            
-            <div class="strategy-cards">
-                <div class="strategy-card" data-aos="fade-up">
-                    <div class="strategy-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Swing Trading</h3>
-                    <p>Hold positions for several days to capitalize on medium-term market movements with our generous drawdown limits.</p>
-                </div>
-                
-                <div class="strategy-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="strategy-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Day Trading</h3>
-                    <p>Execute multiple trades per day with our tight spreads and fast execution on all supported platforms.</p>
-                </div>
-                
-                <div class="strategy-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="strategy-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Algorithmic Trading</h3>
-                    <p>Run your EAs and automated strategies with our stable VPS hosting and low-latency connections.</p>
-                </div>
-                
-                <div class="strategy-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="strategy-icon">
-                        <i class="fas fa-newspaper"></i>
-                    </div>
-                    <h3>News Trading</h3>
-                    <p>Capitalize on market-moving events with our news trading-friendly accounts and instant execution.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section class="comparison">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Why Choose Us?</h2>
-                <p class="subtitle" data-aos="fade-up" data-aos-delay="200">We stand out from traditional prop firms</p>
-            </div>
-            
-            <div class="comparison-table" data-aos="fade-up">
-                <div class="comparison-header">
-                    <div class="feature">Feature</div>
-                    <div class="us">CapitalForForexTraders</div>
-                    <div class="others">Others</div>
-                </div>
-                
-                <div class="comparison-row">
-                    <div class="feature">Evaluation Phase</div>
-                    <div class="us"><i class="fas fa-check"></i> No evaluation</div>
-                    <div class="others"><i class="fas fa-times"></i> Required</div>
-                </div>
-                
-                <div class="comparison-row">
-                    <div class="feature">Payout Speed</div>
-                    <div class="us"><i class="fas fa-check"></i> Within 24-48 hours</div>
-                    <div class="others"><i class="fas fa-times"></i> 5-7 business days</div>
-                </div>
-                
-                <div class="comparison-row">
-                    <div class="feature">Profit Split</div>
-                    <div class="us"><i class="fas fa-check"></i> Up to 80%</div>
-                    <div class="others"><i class="fas fa-times"></i> Typically 50-60%</div>
-                </div>
-                
-                <div class="comparison-row">
-                    <div class="feature">Account Scaling</div>
-                    <div class="us"><i class="fas fa-check"></i> Automatic after payouts</div>
-                    <div class="others"><i class="fas fa-times"></i> Manual application</div>
-                </div>
-                
-                <div class="comparison-row">
-                    <div class="feature">Trading Rules</div>
-                    <div class="us"><i class="fas fa-check"></i> Flexible</div>
-                    <div class="others"><i class="fas fa-times"></i> Restrictive</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Reviews Section -->
-    <section class="reviews" id="reviews">
+    <section class="reviews">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>What Our Traders Say</h2>
-                <p>Don't just take our word for it - hear from our funded traders</p>
+                <h2>Trader Reviews</h2>
             </div>
             
             <div class="review-cards">
                 <div class="review-card" data-aos="fade-up">
                     <div class="reviewer">
-                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Reviewer" loading="lazy">
-                        <div class="reviewer-info">
-                            <h4>Muhammad R.</h4>
-                            <p>$10,000 Account</p>
+                        <img src="images/reviewer1.webp" alt="Trader" loading="lazy">
+                        <div>
+                            <h4>Imran Swati</h4>
+                            <p>Professional Trader</p>
                         </div>
                     </div>
                     <div class="rating">
@@ -1631,37 +935,15 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="review-text">
-                        <p>"I was skeptical at first, but after receiving my first payout within 2 days of requesting, I'm a believer. The process is transparent and the support team is responsive."</p>
-                    </div>
+                    <p>"I've been with CapitalForforexTraders for 6 months and the payouts are always on time. The instant funding program changed my trading career!"</p>
                 </div>
                 
                 <div class="review-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="reviewer">
-                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Reviewer" loading="lazy">
-                        <div class="reviewer-info">
-                            <h4>Ayesha K.</h4>
-                            <p>$5,000 Account</p>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="review-text">
-                        <p>"As a part-time trader, the flexible rules allow me to trade around my schedule. I've scaled from $5k to $15k in just 3 months through consistent profits."</p>
-                    </div>
-                </div>
-                
-                <div class="review-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="reviewer">
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Reviewer" loading="lazy">
-                        <div class="reviewer-info">
-                            <h4>Ali H.</h4>
-                            <p>$25,000 Account</p>
+                        <img src="images/reviewer2.webp" alt="Trader" loading="lazy">
+                        <div>
+                            <h4>Sarah Iqbal</h4>
+                            <p>Swing Trader</p>
                         </div>
                     </div>
                     <div class="rating">
@@ -1671,85 +953,96 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <div class="review-text">
-                        <p>"The best part is the daily drawdown reset. Unlike other firms, one bad day doesn't end your account. This realistic approach helps me trade with confidence."</p>
+                    <p>"The $25k account helped me scale my strategy. Support team is very responsive whenever I have questions."</p>
+                </div>
+                
+                <div class="review-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="reviewer">
+                        <img src="images/reviewer3.webp" alt="Trader" loading="lazy">
+                        <div>
+                            <h4>Daood Ilahi</h4>
+                            <p>Algorithmic Trader</p>
+                        </div>
                     </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"As an EA developer, I appreciate their MT4/MT5 support. Withdrawals processed within 24 hours consistently."</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq" id="faq">
+    <section class="faq">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Frequently Asked Questions</h2>
-                <p>Find answers to common questions about our funding program</p>
             </div>
             
             <div class="faq-container">
                 <div class="faq-item" data-aos="fade-up">
                     <div class="faq-question">
-                        <span>How does the instant funding process work?</span>
+                        How does instant funding work?
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>After selecting your desired account size and making the one-time payment, you'll receive your trading account credentials within 24 hours (usually much faster). There's no evaluation phase - you can start trading immediately with our capital.</p>
+                        <p>Our instant funding program allows you to start trading immediately after purchase without any evaluation phase. You get direct access to a funded account with the chosen balance.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-item" data-aos="fade-up">
                     <div class="faq-question">
-                        <span>What are the profit split terms?</span>
+                        What are the payout terms?
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We offer a generous profit split starting at 70% in your favor, scaling up to 80% based on your trading performance and account size. Payouts can be requested daily once you reach the minimum withdrawal amount.</p>
+                        <p>Payouts are processed biweekly. You keep 50% of profits and it increases 5% with each payout upto 80%. Minimum withdrawal is 10% of account.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="faq-item" data-aos="fade-up">
                     <div class="faq-question">
-                        <span>What are the trading rules?</span>
+                        Drawdown Rules?
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We maintain simple, trader-friendly rules: 10% daily drawdown (resets at midnight server time), 30% maximum loss, and no restrictions on trading styles. You can trade news, use EAs, scalp, or any other strategy.</p>
+                        <p>Daily drawdown is 10% of the Balance, Overall is 30% of initial Balance, hitting anyone of these results permanently account disabled.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="faq-item" data-aos="fade-up">
                     <div class="faq-question">
-                        <span>How do I get paid?</span>
+                        What's the maximum account size?
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Payouts are processed within 24-48 hours of request. We support multiple withdrawal methods including bank transfer, cryptocurrency, and e-wallets. There are no hidden fees - you receive the exact amount you earned.</p>
+                        <p>We offer accounts $1000 to $25,000 in our instant funding program. For larger accounts, check our evaluation program.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="faq-item" data-aos="fade-up">
                     <div class="faq-question">
-                        <span>Can I scale my account?</span>
+                        News Trading?
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! After 3 successful payouts, you become eligible for account scaling. We automatically review your performance and may offer increased capital at no additional cost to you.</p>
+                        <p>News trading, layering, hedging on same account is allowed.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content" data-aos="fade-up">
-                <h2>Ready to Start Trading With Our Capital?</h2>
-                <p>Join over 1,250 traders who are already growing their accounts with us</p>
-                <div class="cta-buttons">
-                    <a href="#pricing" class="btn">View Funding Options</a>
-                    <a href="https://wa.me/923471394290" class="btn secondary-btn">Chat With Us</a>
+                
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        Hidden Rules?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Must hold trade for 2 minutes, trades held less than 2 minutes profits are not considered, 4th trade must be profitable after 3 consecutive losing trades otherwise you get 30% of profit.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1758,189 +1051,146 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-logo">Capitalfor<span>Forex</span>Traders</div>
-            
-            <div class="footer-links">
-                <a href="#pricing">Funding</a>
-                <a href="#platforms">Platforms</a>
-                <a href="#reviews">Reviews</a>
-                <a href="#faq">FAQ</a>
-                <a href="#">Terms</a>
-                <a href="#">Privacy</a>
+            <div class="footer-links" data-aos="fade-up">
+                <a href="#">Home</a>
+                <a href="#">Funding Programs</a>
+                <a href="#">About Us</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact Us</a>
             </div>
             
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <div class="social-links" data-aos="fade-up" data-aos-delay="200">
+                <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/923471394290"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
             
-            <div class="copyright">
+            <p style="color: var(--gray); margin-top: 30px;" data-aos="fade-up" data-aos-delay="400">
                 &copy; 2023 CapitalForForexTraders. All rights reserved.
-            </div>
+            </p>
         </div>
     </footer>
 
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/923471394290" class="whatsapp-float" target="_blank" data-aos="fade-up" data-aos-delay="600">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- Payment Modal -->
-    <div class="modal" id="paymentModal">
+    <div id="paymentModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h3>Get Funded Now</h3>
+            <h2>Complete Your Payment</h2>
+            <p>Please send <span id="paymentAmount">$100</span> to the following TRC20 address to activate your $<span id="accountSize">1000</span> funded account:</p>
+            
             <div class="payment-details">
-                <p>You've selected the <span id="selectedAccount"></span> account for $<span id="selectedAmount"></span></p>
-                <p>Please send payment to one of the following methods:</p>
-                
-                <div class="payment-method">
-                    <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" alt="USDC">
-                    <h4>USDC (ERC-20)</h4>
-                    <div class="payment-address" id="usdcAddress">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</div>
-                </div>
-                
-                <div class="payment-method">
-                    <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT">
-                    <h4>USDT (TRC-20)</h4>
-                    <div class="payment-address" id="usdtAddress">TNPZq5ZQdH6qgqLAb8VAz7YVSkQJ4r8fXG</div>
+                <div class="payment-address" id="trc20Address">
+                    TCcLRPX1jSiKMoMhbYw4HNePFsuoRa1GVx
                 </div>
                 
                 <div class="qr-code">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://capitalforforextraders.com/payment" alt="QR Code">
+                    <img src="images/usdt-qrcode.webp" alt="USDT TRC20 QR Code" loading="lazy">
                 </div>
                 
-                <a href="https://wa.me/923471394290" class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Confirm Payment on WhatsApp
+                <p>After payment, click below to send your payment confirmation via WhatsApp:</p>
+                
+                <a href="https://wa.me/923471394290?text=I%20have%20completed%20the%20payment%20for%20$1000%20account" class="whatsapp-btn" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i> I Have Completed Payment
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/923471394290" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Scroll to Top Button -->
-    <div class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Notification Slides -->
-    <div class="notifications">
-        <div class="notification" data-notification="1">
-            <i class="fas fa-coins"></i>
-            <span>Ahsan</span> received $3,000 payout on $25k account
-        </div>
-        <div class="notification" data-notification="2">
-            <i class="fas fa-wallet"></i>
-            New $10,000 account activated by <span>Dawood</span>
-        </div>
-        <div class="notification" data-notification="3">
-            <i class="fas fa-chart-line"></i>
-            <span>Fatima</span> achieved 12% profit this week
-        </div>
-    </div>
-
-    <!-- JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS (Animate On Scroll)
+        // Initialize animations
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
             once: true
         });
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Update mobile menu on resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 992) {
-                navLinks.style.display = 'flex';
-            } else {
-                navLinks.style.display = 'none';
-            }
-        });
-
-        // Modal functionality
-        const modal = document.getElementById('paymentModal');
-        const closeBtn = document.querySelector('.close');
-        const fundedBtns = document.querySelectorAll('.get-funded-btn');
-        const selectedAccount = document.getElementById('selectedAccount');
-        const selectedAmount = document.getElementById('selectedAmount');
-
-        fundedBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const amount = btn.getAttribute('data-amount');
-                const account = btn.getAttribute('data-account');
-                
-                selectedAccount.textContent = `$${account}`;
-                selectedAmount.textContent = amount;
-                
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // FAQ Accordion
-        const faqQuestions = document.querySelectorAll('.faq-question');
-
-        faqQuestions.forEach(question => {
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentNode;
                 item.classList.toggle('active');
                 
                 // Close other open items
-                faqQuestions.forEach(q => {
-                    if (q !== question) {
-                        q.parentNode.classList.remove('active');
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
                     }
                 });
             });
         });
 
-        // Copy payment address
-        const paymentAddresses = document.querySelectorAll('.payment-address');
+        // Payment Modal functionality
+        const modal = document.getElementById("paymentModal");
+        const btns = document.querySelectorAll(".get-funded-btn");
+        const span = document.getElementsByClassName("close")[0];
+        const paymentAmount = document.getElementById("paymentAmount");
+        const accountSize = document.getElementById("accountSize");
+        const whatsappBtn = document.getElementById("whatsappBtn");
+        const trc20Address = document.getElementById("trc20Address");
 
-        paymentAddresses.forEach(address => {
-            address.addEventListener('click', () => {
-                const text = address.textContent;
-                navigator.clipboard.writeText(text)
-                    .then(() => {
-                        const originalText = address.textContent;
-                        address.textContent = 'Copied!';
-                        address.style.color = var(--accent);
-                        
-                        setTimeout(() => {
-                            address.textContent = originalText;
-                            address.style.color = '';
-                        }, 2000);
-                    });
+        // When user clicks on any "Get Funded Now" button
+        btns.forEach(btn => {
+            btn.addEventListener("click", function(e) {
+                e.preventDefault();
+                const amount = this.getAttribute("data-amount");
+                const account = this.getAttribute("data-account");
+                
+                // Update modal content
+                paymentAmount.textContent = "$" + amount;
+                accountSize.textContent = account;
+                
+                // Update WhatsApp link
+                whatsappBtn.href = `https://wa.me/923471394290?text=I%20have%20completed%20the%20payment%20for%20$${amount}%20($${account}%20account)`;
+                
+                // Show modal
+                modal.style.display = "block";
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+        // When user clicks on (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        // When user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // Copy TRC20 address to clipboard
+        trc20Address.addEventListener('click', function() {
+            const text = this.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = this.innerText;
+                this.innerText = 'Copied to clipboard!';
+                setTimeout(() => {
+                    this.innerText = originalText;
+                }, 2000);
             });
         });
 
         // Scroll to top button
         const scrollTopBtn = document.querySelector('.scroll-top');
-
+        
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollTopBtn.classList.add('active');
@@ -1949,69 +1199,27 @@
             }
         });
 
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        // Lazy loading for images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            img.removeAttribute('data-src');
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
         });
-
-        // Notification Cycle
-        let currentNotification = 0;
-        const notifications = document.querySelectorAll('.notification');
-        
-        function showNextNotification() {
-            notifications[currentNotification].style.display = 'none';
-            currentNotification = (currentNotification + 1) % notifications.length;
-            
-            setTimeout(() => {
-                notifications[currentNotification].style.display = 'block';
-                notifications[currentNotification].style.animation = 'slideIn 0.5s forwards';
-            }, 500);
-            
-            setTimeout(showNextNotification, 5000);
-        }
-
-        // Start notification cycle after 3 seconds
-        setTimeout(() => {
-            notifications[0].style.display = 'block';
-            notifications[0].style.animation = 'slideIn 0.5s forwards';
-            setTimeout(showNextNotification, 5000);
-        }, 3000);
-
-        // Random success messages
-        const successMessages = [
-            { name: 'Imran', amount: '3000', platform: 'FBS' },
-            { name: 'Sana', amount: '1500', platform: 'IC Markets' },
-            { name: 'Ali', amount: '5000', platform: 'Exness' },
-            { name: 'Hassan', amount: '2200', platform: 'FBS' },
-            { name: 'Ayesha', amount: '1800', platform: 'IC Markets' }
-        ];
-
-        function createRandomNotification() {
-            const msg = successMessages[Math.floor(Math.random() * successMessages.length)];
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                ${msg.name} got $${msg.amount} <span>Payout</span> on ${msg.platform}
-            `;
-            document.querySelector('.notifications').appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'slideIn 0.5s forwards';
-            }, 100);
-            
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.5s forwards';
-                setTimeout(() => {
-                    notification.remove();
-                }, 500);
-            }, 5000);
-        }
-
-        // Generate random notifications every 30-60 seconds
-        setInterval(createRandomNotification, Math.random() * 30000 + 30000);
     </script>
 </body>
 </html>
