@@ -27,12 +27,92 @@
             background-color: var(--dark);
             color: var(--light);
             position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .background-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 25%),
+                        radial-gradient(circle at 70% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 25%),
+                        radial-gradient(circle at 30% 70%, rgba(0, 255, 0, 0.1) 0%, transparent 25%);
+            animation: pulse 15s infinite alternate;
+        }
+
+        .background-animation::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,215,0,0.05)" stroke-width="0.5"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+        }
+
+        /* Currency Pair Animation */
+        .currency-pair {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+            font-size: 1.2rem;
+            animation: float 15s infinite linear;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50vw) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
         }
 
         /* Header */
@@ -44,37 +124,100 @@
             top: 0;
             z-index: 1000;
             border-bottom: 2px solid var(--primary);
+            backdrop-filter: blur(5px);
         }
 
         .logo {
             font-size: 2rem;
             font-weight: 700;
             color: var(--light);
+            display: flex;
+            align-items: center;
         }
 
         .logo span {
             color: var(--primary);
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 150px 0 100px;
-            background: linear-gradient(45deg, var(--dark), #1A1A1A);
-            text-align: center;
+        .logo::before {
+            content: '₿';
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+
+        /* Notifications */
+        .notifications {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+        }
+
+        .notification {
+            background: rgba(26, 26, 26, 0.9);
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateX(-150%);
+            animation: slideIn 0.5s forwards;
+            backdrop-filter: blur(5px);
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
+        .notification::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: url('images/forex-pattern.webp') center/cover;
-            opacity: 0.1;
-            z-index: -1;
+            height: 3px;
+            background: var(--secondary);
+            animation: progress 5s linear forwards;
+        }
+
+        @keyframes slideIn {
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes progress {
+            0% {
+                width: 100%;
+            }
+            100% {
+                width: 0%;
+            }
+        }
+
+        .notification:nth-child(1) {
+            animation-delay: 2s;
+        }
+        .notification:nth-child(2) {
+            animation-delay: 7s;
+        }
+        .notification:nth-child(3) {
+            animation-delay: 12s;
+        }
+
+        .notification strong {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(45deg, rgba(10, 10, 10, 0.8), rgba(26, 26, 26, 0.8));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero h1 {
@@ -84,13 +227,40 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .hero p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Stats Section */
         .stats {
             padding: 60px 0;
-            background: #111111;
+            background: rgba(17, 17, 17, 0.8);
             text-align: center;
+            position: relative;
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
         }
 
         .stats-container {
@@ -103,11 +273,19 @@
         .stat-item {
             flex: 1;
             min-width: 200px;
-            background: #1A1A1A;
+            background: rgba(26, 26, 26, 0.7);
             padding: 30px 20px;
             border-radius: 10px;
-            border: 1px solid #333;
+            border: 1px solid rgba(255, 215, 0, 0.2);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.4);
         }
 
         .stat-number {
@@ -115,6 +293,19 @@
             color: var(--secondary);
             font-weight: 700;
             margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .stat-number::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
         }
 
         .stat-label {
@@ -125,7 +316,9 @@
         /* Pricing Section */
         .pricing {
             padding: 100px 0;
-            background: #111111;
+            background: rgba(17, 17, 17, 0.8);
+            position: relative;
+            backdrop-filter: blur(5px);
         }
 
         .section-title {
@@ -164,13 +357,44 @@
         }
 
         .pricing-card {
-            background: #1A1A1A;
+            background: rgba(26, 26, 26, 0.7);
             border: 2px solid var(--primary);
             border-radius: 10px;
             padding: 30px;
             text-align: center;
             transition: all 0.3s;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent 0%,
+                transparent 45%,
+                rgba(255, 215, 0, 0.05) 50%,
+                transparent 55%,
+                transparent 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -50%;
+            }
+            100% {
+                left: 150%;
+            }
         }
 
         .pricing-card:hover {
@@ -227,6 +451,7 @@
             box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .btn::before {
@@ -238,6 +463,7 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: 0.5s;
+            z-index: -1;
         }
 
         .btn:hover {
@@ -252,7 +478,9 @@
         /* Platforms Section */
         .platforms {
             padding: 100px 0;
-            background: #0A0A0A;
+            background: rgba(10, 10, 10, 0.8);
+            position: relative;
+            backdrop-filter: blur(5px);
         }
 
         .platform-cards {
@@ -264,13 +492,14 @@
         }
 
         .platform-card {
-            background: #1A1A1A;
+            background: rgba(26, 26, 26, 0.7);
             padding: 30px;
             border-radius: 10px;
             width: 250px;
             border: 2px solid var(--secondary);
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
         }
 
         .platform-card:hover {
@@ -284,6 +513,7 @@
             margin: 0 auto 20px;
             display: block;
             transition: transform 0.3s;
+            filter: drop-shadow(0 5px 10px rgba(255, 215, 0, 0.3));
         }
 
         .platform-card:hover img {
@@ -293,7 +523,9 @@
         /* Reviews Section */
         .reviews {
             padding: 100px 0;
-            background: #111111;
+            background: rgba(17, 17, 17, 0.8);
+            position: relative;
+            backdrop-filter: blur(5px);
         }
 
         .review-cards {
@@ -304,12 +536,13 @@
         }
 
         .review-card {
-            background: #1A1A1A;
+            background: rgba(26, 26, 26, 0.7);
             border: 1px solid var(--secondary);
             border-radius: 10px;
             padding: 30px;
             position: relative;
             transition: all 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .review-card::before {
@@ -342,6 +575,7 @@
             margin-right: 15px;
             border: 2px solid var(--secondary);
             object-fit: cover;
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
         }
 
         .rating {
@@ -352,7 +586,9 @@
         /* FAQ Section */
         .faq {
             padding: 100px 0;
-            background: #0A0A0A;
+            background: rgba(10, 10, 10, 0.8);
+            position: relative;
+            backdrop-filter: blur(5px);
         }
 
         .faq-container {
@@ -366,15 +602,17 @@
             border-radius: 5px;
             overflow: hidden;
             transition: all 0.3s;
+            background: rgba(26, 26, 26, 0.7);
         }
 
         .faq-item:hover {
             border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
         }
 
         .faq-question {
             padding: 15px 20px;
-            background: #1A1A1A;
+            background: rgba(26, 26, 26, 0.7);
             color: var(--light);
             cursor: pointer;
             display: flex;
@@ -385,7 +623,7 @@
         }
 
         .faq-question:hover {
-            background: #222222;
+            background: rgba(34, 34, 34, 0.7);
         }
 
         .faq-question i {
@@ -401,7 +639,7 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
-            background: #222222;
+            background: rgba(34, 34, 34, 0.7);
         }
 
         .faq-answer p {
@@ -414,11 +652,12 @@
 
         /* Footer */
         footer {
-            background: #000000;
+            background: rgba(0, 0, 0, 0.8);
             padding: 50px 0;
             text-align: center;
             border-top: 2px solid var(--primary);
             position: relative;
+            backdrop-filter: blur(5px);
         }
 
         footer::before {
@@ -428,8 +667,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('images/footer-pattern.webp') center/cover;
-            opacity: 0.1;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,215,0,0.1)" stroke-width="0.5"/></svg>');
+            opacity: 0.3;
             z-index: -1;
         }
 
@@ -445,10 +684,26 @@
             color: var(--gray);
             text-decoration: none;
             transition: color 0.3s;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
         }
 
         .footer-links a:hover {
             color: var(--secondary);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
         }
 
         .social-links {
@@ -462,11 +717,12 @@
             color: var(--light);
             font-size: 1.5rem;
             transition: transform 0.3s, color 0.3s;
+            display: inline-block;
         }
 
         .social-links a:hover {
             color: var(--secondary);
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.1);
         }
 
         /* Payment Modal */
@@ -483,7 +739,7 @@
         }
 
         .modal-content {
-            background-color: #1A1A1A;
+            background-color: rgba(26, 26, 26, 0.95);
             margin: 10% auto;
             padding: 30px;
             border: 2px solid var(--secondary);
@@ -493,6 +749,8 @@
             text-align: center;
             position: relative;
             animation: modalFadeIn 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         @keyframes modalFadeIn {
@@ -526,7 +784,7 @@
         }
 
         .payment-address {
-            background: #0A0A0A;
+            background: rgba(10, 10, 10, 0.7);
             padding: 15px;
             border-radius: 5px;
             word-break: break-all;
@@ -535,6 +793,12 @@
             border: 1px solid var(--primary);
             position: relative;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-address:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
 
         .payment-address::after {
@@ -563,6 +827,7 @@
             padding: 10px;
             border-radius: 5px;
             border: 2px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .qr-code img {
@@ -583,12 +848,13 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
         .whatsapp-btn:hover {
             transform: scale(1.05);
             color: white;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
 
         /* WhatsApp Button */
@@ -659,6 +925,7 @@
 
         .scroll-top:hover {
             background-color: var(--secondary);
+            transform: translateY(-5px);
         }
 
         /* Responsive Adjustments */
@@ -695,6 +962,12 @@
                 bottom: 80px;
                 right: 20px;
             }
+
+            .notifications {
+                max-width: 250px;
+                left: 10px;
+                bottom: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -710,10 +983,21 @@
                 width: 100%;
                 max-width: 300px;
             }
+
+            .footer-links {
+                gap: 15px;
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="background-animation"></div>
+
+    <!-- Currency Pairs Floating Animation -->
+    <div id="currencyPairs"></div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -721,12 +1005,25 @@
         </div>
     </header>
 
+    <!-- Notifications -->
+    <div class="notifications">
+        <div class="notification">
+            <strong>Ahsan</strong> just received a $3,000 payout from his $10,000 account!
+        </div>
+        <div class="notification">
+            <strong>Dawood</strong> purchased a $25,000 funded account and started trading!
+        </div>
+        <div class="notification">
+            <strong>Sarah</strong> achieved 80% profit split on her $5,000 account!
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1 data-aos="fade-up">Get Instant Funding Today</h1> 
             <h1 data-aos="fade-up">On Your Trusted Broker (Exness, FBS, IC Markets)</h1> 
-            <p data-aos="fade-up" data-aos-delay="200" style="color: var(--gray); margin-bottom: 30px;">
+            <p data-aos="fade-up" data-aos-delay="200">
                 Start trading with our capital in minutes - No evaluation required!
             </p>
             <a href="#pricing" class="btn" data-aos="fade-up" data-aos-delay="400">View Funding Options</a>
@@ -813,413 +1110,4 @@
                 </div>
 
                 <!-- $5,000 Account -->
-                <div class="pricing-card" data-aos="fade-up" data-aos-delay="400">
-                    <h3>Expert Account</h3>
-                    <div class="price">
-                        $5,000 <span>for $500</span>
-                    </div>
-                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 1:200 Leverage</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 10% Daily Drawdown</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 30% Max Loss</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto 80% Profit Split</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto Daily Payouts</li>
-                    </ul>
-                    <a href="#" class="btn get-funded-btn" data-amount="500" data-account="5000">Get Funded Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="pricing">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Premium Funding</h2>
-            </div>
-            
-            <div class="pricing-cards">
-                <!-- $10,000 Account -->
-                <div class="pricing-card" data-aos="fade-up">
-                    <h3>Advanced Account</h3>
-                    <div class="price">
-                        $10,000 <span>for $1,000</span>
-                    </div>
-                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 1:200 Leverage</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 10% Daily Drawdown</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 30% Max Loss</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto 80% Profit Split</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto Daily Payouts</li>
-                    </ul>
-                    <a href="#" class="btn get-funded-btn" data-amount="1000" data-account="10000">Get Funded Now</a>
-                </div>
-
-                <!-- $15,000 Account -->
-                <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Elite Account</h3>
-                    <div class="price">
-                        $15,000 <span>for $1,500</span>
-                    </div>
-                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 1:200 Leverage</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 10% Daily Drawdown</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 30% Max Loss</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto 80% Profit Split</li> 
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto Daily Payouts</li>
-                    </ul>
-                    <a href="#" class="btn get-funded-btn" data-amount="1500" data-account="15000">Get Funded Now</a>
-                </div>
-
-                <!-- $25,000 Account -->
-                <div class="pricing-card" data-aos="fade-up" data-aos-delay="400">
-                    <h3>Master Account</h3>
-                    <div class="price">
-                        $25,000 <span>for $2,500</span>
-                    </div>
-                    <ul style="list-style: none; text-align: left; margin: 20px 0;">
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 1:200 Leverage</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 10% Daily Drawdown</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> 30% Max Loss</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto 80% Profit Split</li>
-                        <li><i class="fas fa-check" style="color: var(--accent); margin-right: 5px;"></i> Upto Daily Payouts</li>
-                    </ul>
-                    <a href="#" class="btn get-funded-btn" data-amount="2500" data-account="25000">Get Funded Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Platforms Section -->
-    <section class="platforms">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Supported Platforms</h2>
-            </div>
-            
-            <div class="platform-cards">
-                <div class="platform-card" data-aos="fade-up">
-                    <img src="images/mt5-icon.webp" alt="MetaTrader 5" loading="lazy">
-                    <h3>MetaTrader 5</h3>
-                    <p>The most advanced trading platform with superior tools for technical analysis and algorithmic trading</p>
-                </div>
-                
-                <div class="platform-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="images/mt4-icon.webp" alt="MetaTrader 4" loading="lazy">
-                    <h3>MetaTrader 4</h3>
-                    <p>The world's most popular trading platform with reliable execution and extensive functionality</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews Section -->
-    <section class="reviews">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Trader Reviews</h2>
-            </div>
-            
-            <div class="review-cards">
-                <div class="review-card" data-aos="fade-up">
-                    <div class="reviewer">
-                        <img src="images/reviewer1.webp" alt="Trader" loading="lazy">
-                        <div>
-                            <h4>Imran Swati</h4>
-                            <p>Professional Trader</p>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"I've been with CapitalForforexTraders for 6 months and the payouts are always on time. The instant funding program changed my trading career!"</p>
-                </div>
-                
-                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="reviewer">
-                        <img src="images/reviewer2.webp" alt="Trader" loading="lazy">
-                        <div>
-                            <h4>Sarah Iqbal</h4>
-                            <p>Swing Trader</p>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p>"The $25k account helped me scale my strategy. Support team is very responsive whenever I have questions."</p>
-                </div>
-                
-                <div class="review-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="reviewer">
-                        <img src="images/reviewer3.webp" alt="Trader" loading="lazy">
-                        <div>
-                            <h4>Daood Ilahi</h4>
-                            <p>Algorithmic Trader</p>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"As an EA developer, I appreciate their MT4/MT5 support. Withdrawals processed within 24 hours consistently."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Frequently Asked Questions</h2>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        How does instant funding work?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our instant funding program allows you to start trading immediately after purchase without any evaluation phase. You get direct access to a funded account with the chosen balance.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        What are the payout terms?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Payouts are processed biweekly. You keep 50% of profits and it increases 5% with each payout upto 80%. Minimum withdrawal is 10% of account.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        Drawdown Rules?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Daily drawdown is 10% of the Balance, Overall is 30% of initial Balance, hitting anyone of these results permanently account disabled.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        What's the maximum account size?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We offer accounts $1000 to $25,000 in our instant funding program. For larger accounts, check our evaluation program.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        News Trading?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>News trading, layering, hedging on same account is allowed.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        Hidden Rules?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Must hold trade for 2 minutes, trades held less than 2 minutes profits are not considered, 4th trade must be profitable after 3 consecutive losing trades otherwise you get 30% of profit.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-links" data-aos="fade-up">
-                <a href="#">Home</a>
-                <a href="#">Funding Programs</a>
-                <a href="#">About Us</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Contact Us</a>
-            </div>
-            
-            <div class="social-links" data-aos="fade-up" data-aos-delay="200">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-            
-            <p style="color: var(--gray); margin-top: 30px;" data-aos="fade-up" data-aos-delay="400">
-                &copy; 2023 CapitalForForexTraders. All rights reserved.
-            </p>
-        </div>
-    </footer>
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/923471394290" class="whatsapp-float" target="_blank" data-aos="fade-up" data-aos-delay="600">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Scroll to Top Button -->
-    <div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Payment Modal -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Complete Your Payment</h2>
-            <p>Please send <span id="paymentAmount">$100</span> to the following TRC20 address to activate your $<span id="accountSize">1000</span> funded account:</p>
-            
-            <div class="payment-details">
-                <div class="payment-address" id="trc20Address">
-                    TCcLRPX1jSiKMoMhbYw4HNePFsuoRa1GVx
-                </div>
-                
-                <div class="qr-code">
-                    <img src="images/usdt-qrcode.webp" alt="USDT TRC20 QR Code" loading="lazy">
-                </div>
-                
-                <p>After payment, click below to send your payment confirmation via WhatsApp:</p>
-                
-                <a href="https://wa.me/923471394290?text=I%20have%20completed%20the%20payment%20for%20$1000%20account" class="whatsapp-btn" id="whatsappBtn">
-                    <i class="fab fa-whatsapp"></i> I Have Completed Payment
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize animations
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-
-        // FAQ toggle functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentNode;
-                item.classList.toggle('active');
-                
-                // Close other open items
-                document.querySelectorAll('.faq-item').forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-            });
-        });
-
-        // Payment Modal functionality
-        const modal = document.getElementById("paymentModal");
-        const btns = document.querySelectorAll(".get-funded-btn");
-        const span = document.getElementsByClassName("close")[0];
-        const paymentAmount = document.getElementById("paymentAmount");
-        const accountSize = document.getElementById("accountSize");
-        const whatsappBtn = document.getElementById("whatsappBtn");
-        const trc20Address = document.getElementById("trc20Address");
-
-        // When user clicks on any "Get Funded Now" button
-        btns.forEach(btn => {
-            btn.addEventListener("click", function(e) {
-                e.preventDefault();
-                const amount = this.getAttribute("data-amount");
-                const account = this.getAttribute("data-account");
-                
-                // Update modal content
-                paymentAmount.textContent = "$" + amount;
-                accountSize.textContent = account;
-                
-                // Update WhatsApp link
-                whatsappBtn.href = `https://wa.me/923471394290?text=I%20have%20completed%20the%20payment%20for%20$${amount}%20($${account}%20account)`;
-                
-                // Show modal
-                modal.style.display = "block";
-                document.body.style.overflow = "hidden";
-            });
-        });
-
-        // When user clicks on (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-        }
-
-        // When user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                document.body.style.overflow = "auto";
-            }
-        }
-
-        // Copy TRC20 address to clipboard
-        trc20Address.addEventListener('click', function() {
-            const text = this.innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = this.innerText;
-                this.innerText = 'Copied to clipboard!';
-                setTimeout(() => {
-                    this.innerText = originalText;
-                }, 2000);
-            });
-        });
-
-        // Scroll to top button
-        const scrollTopBtn = document.querySelector('.scroll-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.classList.add('active');
-            } else {
-                scrollTopBtn.classList.remove('active');
-            }
-        });
-
-        // Lazy loading for images
-        document.addEventListener('DOMContentLoaded', function() {
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-            
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.dataset.src || img.src;
-                            img.removeAttribute('data-src');
-                            observer.unobserve(img);
-                        }
-                    });
-                });
-
-                lazyImages.forEach(img => {
-                    imageObserver.observe(img);
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+                <div class="pricing-card" data-aos="fade                                  
